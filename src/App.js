@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import { Test1 } from './components/tes1';
 
 function App() {
+  const [namaSiswa, setNamaSiswa] = useState([]);
+  useEffect(() => {
+    console.log('siswa ditambahkan')
+  },[namaSiswa]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input type="text" id="nama_siswa"/>
+      <button onClick={() => setNamaSiswa(s => [...s, document.getElementById("nama_siswa").value])}>Tambah</button>
+      <h1>Daftar Siswa</h1>
+      {namaSiswa.map((v, i) => <Test1 nama={v} key={i}/>)}
     </div>
   );
 }
